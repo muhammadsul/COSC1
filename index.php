@@ -21,18 +21,23 @@ body{
 
 	<form method = "post" action= "checker.php">
 	 <label><l>Username:</l></label>
-	<input type="Username" name="Username"><br>
+	<input type="user" name="user"><br>
 	 <label><l>Password:</l></label>
-	<input type="Password" name="Password"><br>
+	<input type="password" name="code"><br>
 	<input type="submit" value = login name = "login">
-		
-	</form>
-	
-	<form method = "post" action= "attempts.php">
-	
 	<input type="submit" value = attempts name = "attempts">
 
+		
 	</form>
+	</html>
 	
+	<?php
 
-	<html>
+	
+	if(isset($_SESSION['is authenticated'])){
+	header("Location:success.php");
+	}	
+	
+	echo "<p><a href= 'registration.php'> Get your account!! </a>";
+
+	?>

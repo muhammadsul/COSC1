@@ -1,8 +1,12 @@
 <?php
 		session_start();
-		if(isset($_POST['attempts'])){
-		$_SESSION['attempts'] = $_SESSION['attempts']+1 ;
-		echo "count is: ". $_SESSION['attempts'];
-		}
+		if(isset($_SESSION['attempts'])){
+	$_SESSION['attempts']=0;
+}
+
+
+	if(isset($_SESSION['attempts'])){
+	echo "attempts are: ".$_SESSION['attempts'];
+}
 
 ?>
