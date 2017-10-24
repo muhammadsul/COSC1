@@ -16,28 +16,34 @@ class User {
          * $this->auth = true;
          */
 		 
-		$db = db_connect();
-        $query="SELECT * FROM users WHERE Name=:user AND passcode=:code";
-        $checkstat=$conn->prepare($query);
+		  $db = db_connect();
+         $query="SELECT * FROM users WHERE Name=:user AND passcode=:code";
+        $checkstat= $db->prepare($query);
         $checkstat->execute(array(
             'user' => $_POST['user'],
             'code' => $_POST['code']
         ));
         $count=$checkstat->rowCount();
         if($count>0){
-            $_SESSION['user']=$_POST['user'];
-		}
+            this-> auth = true;
+            $_SESSION['user']=$rows['user'];
+            $_SESSION['code']=$rows['code'];
+
+
+        }
     }
+    
 	
 	public function register ($username, $password) {
-		$db = db_connect();
-        $connprep=$conn->prepare("INSERT INTO Users(Name, Passcode, address)
-    						 values(:name,:code,:email)");
+	else{
+           $db = db_connect();
+
+            $connprep= $db->prepare("INSERT INTO Users(Name, Passcode, address)
+                             values(:name,:code,:email)");
     $connprep->bindParam('name',$myName);
-	$connprep->bindParam('code',$myPasscode);
+    $connprep->bindParam('code',$myPasscode);
     $connprep->bindParam('email',$emailAdress);
     $connprep->execute();
-
-	}
+        }
 
 }
