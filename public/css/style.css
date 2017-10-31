@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+body {
+    background-color: green;
+}
+h1 {
+    color: royalblue;
+    text-align: center;
+}
+h4 {
+    color: red;
+    text-align: center;
+}
+h5 {
+    color: midnightblue;
+    text-align: center;
+}
+
+.center {
+    padding:  0;
+    text-align: center;
+}
+body {
+    background-color: lightsteelblue;
+}
+
+input[type=submit] {
+    width: 5%;
+    background-color: #2E4053;
+    color: white;
+    text-align: center;
+}
+
+input[type=submit]:hover {
+    background-color: #85929E;
+        submit-align: center;
+
+}
+
+</style>
+</html>

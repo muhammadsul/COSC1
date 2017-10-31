@@ -4,10 +4,9 @@ class Home extends Controller {
 
     public function index($name = '') {		
         $user = $this->model('User');
-
-
-        $message =   ' Hey ' . $_SESSION['user']. 
-        '. Today is '. date("d/m/Y") ;
+		
+		$message='Hello!, Welcome Back'.$_SESSION['name'].' Today is ' . date("Y/m/d") ;
+		
         $this->view('home/index', ['message' => $message]);
     }
 

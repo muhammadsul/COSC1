@@ -11,13 +11,9 @@ class User {
     }
 
     public function authenticate() {
-        /*
-         * if username and password good then
-         * $this->auth = true;
-         */
-		 
-		  $db = db_connect();
-         $query="SELECT * FROM users WHERE Name=:user AND passcode=:code";
+        $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query="SELECT * FROM users WHERE Name=:user AND passcode=:code";
         $checkstat= $db->prepare($query);
         $checkstat->execute(array(
             'user' => $_POST['user'],
@@ -25,25 +21,17 @@ class User {
         ));
         $count=$checkstat->rowCount();
         if($count>0){
-            this-> auth = true;
             $_SESSION['user']=$rows['user'];
-            $_SESSION['code']=$rows['code'];
-
-
+            $_SESSION['auth'] = true;
         }
     }
-    
-	
-	public function register ($username, $password) {
-	else{
-           $db = db_connect();
-
-            $connprep= $db->prepare("INSERT INTO Users(Name, Passcode, address)
-                             values(:name,:code,:email)");
-    $connprep->bindParam('name',$myName);
-    $connprep->bindParam('code',$myPasscode);
-    $connprep->bindParam('email',$emailAdress);
-    $connprep->execute();
-        }
-
+    public function register ($name, $pass, $email) {  
+        $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
+        $connprep=$db->prepare("INSERT INTO users(Name, Passcode, address)
+                            values(:name,:code,:email)");
+        $connprep->bindParam('name',$username);
+        $connprep->bindParam('code',$password);
+        $connprep->bindParam('email',$email);
+        $connprep->execute();
+    }
 }
