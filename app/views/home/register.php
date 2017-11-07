@@ -22,10 +22,13 @@
   
    <label><l>E-mail:</l></label>
     <input type="text" name="email" ><br>
-
+  
+  <a href= '../app/views/login.php'> You already have account! </a><br>
   
   <input type="submit" value = Save name = "insert">
 
+
+   
     
 </div>
 

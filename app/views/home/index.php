@@ -3,6 +3,8 @@
 <div>
     <div>
             <p> <?=$data['message']?> </p>
+            	<a href='/remind/index'> Click for more reminder </a>
+
         </div>
     </div>
 

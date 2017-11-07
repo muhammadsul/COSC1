@@ -11,6 +11,10 @@ class User {
     }
 
     public function authenticate() {
+
+
+
+
         $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query="SELECT * FROM users WHERE Name=:user AND passcode=:code";
@@ -25,13 +29,25 @@ class User {
             $_SESSION['auth'] = true;
         }
     }
-    public function register ($name, $pass, $email) {  
+
+
+
+ 
+    public function register ($username, $password, $email) {  
+        try{
         $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
-        $connprep=$db->prepare("INSERT INTO users(Name, Passcode, address)
-                            values(:name,:code,:email)");
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $connprep=$db->prepare("INSERT INTO users(Name, Passcode, address)"
+                            ."values(:name,:code,:email)");
         $connprep->bindParam('name',$username);
         $connprep->bindParam('code',$password);
         $connprep->bindParam('email',$email);
         $connprep->execute();
+    }
+    catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+    $db = null;
     }
 }
