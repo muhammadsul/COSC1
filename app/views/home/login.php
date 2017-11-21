@@ -14,7 +14,6 @@
 			<input type="text" name="code" class="form-control" id="exampleInputPassword1" placeholder="Entert password"><br>
 			<input type="submit" value = login name = "login" class="btn btn-warning">
 			<input type="submit" value = attempts name = "attempts" class="btn btn-warning">
-			<a href='/login/register'> Sign up here </a>
 		</div>
 		</html>
 		<?php require_once '../app/views/templates/footer.php' ?>
