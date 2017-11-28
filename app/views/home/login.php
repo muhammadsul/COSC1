@@ -1,4 +1,4 @@
-<?php require_once '../app/views/templates/headerPublic.php' ?>
+a<?php require_once '../app/views/templates/headerPublic.php' ?>
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/booststrap.css">
 </head>
